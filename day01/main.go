@@ -52,7 +52,7 @@ func p2() {
 
 	increases := 0
 
-	WINDOW_SIZE := 3
+	const WINDOW_SIZE = 3
 	windowSum := 0
 	for i := 0; i < WINDOW_SIZE; i++ {
 		windowSum += nums[i]
