@@ -48,7 +48,30 @@ func p1() {
 }
 
 func p2() {
-	f, err := os.Open("p1p2.txt")
+	nums := readNums("p1p2.txt")
+
+	increases := 0
+
+	WINDOW_SIZE := 3
+	windowSum := 0
+	for i := 0; i < WINDOW_SIZE; i++ {
+		windowSum += nums[i]
+	}
+
+	for i := WINDOW_SIZE; i < len(nums); i++ {
+		newWindowSum := windowSum + nums[i] - nums[i - WINDOW_SIZE]
+		if newWindowSum > windowSum {
+			increases++
+		}
+
+		windowSum = newWindowSum
+	}
+
+	fmt.Println(increases)
+}
+
+func readNums(filename string) []int {
+	f, err := os.Open(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -72,22 +95,5 @@ func p2() {
 		log.Fatal(err)
 	}
 
-	increases := 0
-
-	WINDOW_SIZE := 3
-	windowSum := 0
-	for i := 0; i < WINDOW_SIZE; i++ {
-		windowSum += nums[i]
-	}
-
-	for i := WINDOW_SIZE; i < len(nums); i++ {
-		newWindowSum := windowSum + nums[i] - nums[i - WINDOW_SIZE]
-		if newWindowSum > windowSum {
-			increases++
-		}
-
-		windowSum = newWindowSum
-	}
-
-	fmt.Println(increases)
+	return nums
 }
