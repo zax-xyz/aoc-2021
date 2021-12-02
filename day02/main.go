@@ -40,5 +40,30 @@ func P1() {
 }
 
 func P2() {
+	lines := lib.ReadLines("day2p1.txt")
 
+	aim := 0
+	pos := [2]int{0, 0}
+
+	for _, line := range lines {
+		parts := strings.Fields(line)
+		distance, err := strconv.Atoi(parts[1])
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		switch direction := parts[0]; direction {
+		case "down":
+			aim += distance
+		case "up":
+			aim -= distance
+		case "forward":
+			pos[0] += distance
+			pos[1] += aim * distance
+		default:
+			log.Fatal("invalid direction: " + direction)
+		}
+	}
+
+	fmt.Println(pos[0] * pos[1])
 }
