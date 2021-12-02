@@ -5,14 +5,17 @@ import (
 	"log"
 	"strconv"
 	"strings"
+
+	"github.com/zaxutic/aoc-2021/lib"
 )
 
 func main() {
-	p1()
+	P1()
+	P2()
 }
 
-func p1() {
-	lines := readLines("day2p1.txt")
+func P1() {
+	lines := lib.ReadLines("day2p1.txt")
 	pos := [2]int{0, 0}
 	for _, line := range lines {
 		parts := strings.Fields(line)
@@ -34,4 +37,8 @@ func p1() {
 	}
 
 	fmt.Println(pos[0] * pos[1])
+}
+
+func P2() {
+
 }

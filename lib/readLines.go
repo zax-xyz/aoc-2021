@@ -1,4 +1,4 @@
-package main
+package lib
 
 import (
 	"bufio"
@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func readLines(filename string) []string {
+func ReadLines(filename string) []string {
 	f, err := os.Open(filename)
 	if err != nil {
 		log.Fatal(err)
