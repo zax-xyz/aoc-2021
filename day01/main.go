@@ -15,7 +15,7 @@ func main() {
 }
 
 func p1() {
-	f, err := os.Open("p1p1.txt")
+	f, err := os.Open("day1.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -48,7 +48,7 @@ func p1() {
 }
 
 func p2() {
-	nums := readNums("p1p2.txt")
+	nums := readNums("day2.txt")
 
 	increases := 0
 

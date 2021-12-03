@@ -15,7 +15,7 @@ func main() {
 }
 
 func p1() {
-	lines := lib.ReadLines("day2p1.txt")
+	lines := lib.ReadLines("day2.txt")
 	pos := [2]int{0, 0}
 	for _, line := range lines {
 		parts := strings.Fields(line)
@@ -40,7 +40,7 @@ func p1() {
 }
 
 func p2() {
-	lines := lib.ReadLines("day2p1.txt")
+	lines := lib.ReadLines("day2.txt")
 
 	aim := 0
 	pos := [2]int{0, 0}
