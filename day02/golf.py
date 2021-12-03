@@ -1,6 +1,6 @@
 # p1
 h=d=0
-for x,y in map(str.split,open('day2.txt')):z=int(y);d+=z*(a:=len(x)-3)*(a<4);h+=z*(a>1)
+for x,y in map(str.split,open('day2.txt')):z=int(y);a=len(x)-3;d+=z*a*(a<4);h+=z*(a>1)
 print(h*d)
 
 # p2
