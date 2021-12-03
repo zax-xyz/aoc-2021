@@ -65,12 +65,7 @@ func filter(lines []string, bits []int, flip bool) string {
 		// filter by lines that match the most common bit at i
 		filtered = []string{}
 		for _, line := range linesCopy {
-			bit := bits[i]
-			if flip {
-				bit = 1 - bit
-			}
-
-			if int(line[i] - '0') == bit {
+			if (int(line[i] - '0') == bits[i]) != flip {
 				filtered = append(filtered, line)
 			}
 		}
