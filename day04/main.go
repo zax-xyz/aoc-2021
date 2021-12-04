@@ -105,4 +105,38 @@ func getScore(board[][]int, num int) int {
 }
 
 func p2() {
+	lines := lib.ReadLines("day4.txt")
+
+	drawn := []int{}
+	for _, field := range strings.Split(lines[0], ",") {
+		num, _ := strconv.Atoi(field)
+		drawn = append(drawn, num)
+	}
+
+	boards, positions := readBoards(lines)
+	remaining := map[int]struct{}{}
+	for i := range boards {
+		remaining[i] = struct{}{}
+	}
+
+	for _, num := range drawn {
+		for i := range remaining {
+			board := boards[i]
+
+			pos, ok := positions[i][num]
+			if !ok || board[pos[0]][pos[1]] < 0 {
+				continue
+			}
+
+			board[pos[0]][pos[1]] = ^board[pos[0]][pos[1]]
+			if checkBoard(board, pos[0], pos[1]) {
+				delete(remaining, i)
+			}
+
+			if len(remaining) == 0 {
+				fmt.Println(getScore(board, num))
+				return
+			}
+		}
+	}
 }
