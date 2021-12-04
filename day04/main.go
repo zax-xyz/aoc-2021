@@ -66,32 +66,31 @@ func readBoards(lines []string) (boards [][][]int, positions []map[int][2]int) {
 	return boards, positions
 }
 
-// instead of checking the whole board (O(n^2)), we only check the relevant row and column (O(n))
-func checkBoard(board [][]int, r int, c int) bool {
-	win := true
-	for _, num := range board[r] {
-		if num > 0 {
-			win = false
-			break
-		}
-	}
-
-	if win {
-		return true
-	}
-
-	win = true
-	for _, row := range board {
-		if row[c] > 0 {
-			win = false
-			break
-		}
-	}
-
-	return win
+func checkBoard(board [][]int, row int, col int) bool {
+	return checkRow(board, row) || checkCol(board, col)
 }
 
-func getScore(board[][]int, num int) int {
+func checkRow(board [][]int, row int) bool {
+	for _, num := range board[row] {
+		if num > 0 {
+			return false
+		}
+	}
+
+	return true
+}
+
+func checkCol(board [][]int, col int) bool {
+	for _, row := range board {
+		if row[col] > 0 {
+			return false
+		}
+	}
+
+	return true
+}
+
+func getScore(board [][]int, num int) int {
 	score := 0
 	for _, row := range board {
 		for _, num := range row {
