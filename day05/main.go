@@ -40,17 +40,17 @@ func p1() {
 
 		if from.x != to.x {
 			min, max := minMax(from.x, to.x)
-			for i := min; i <= max; i++ {
-				grid[i][from.y]++
-				if grid[i][from.y] == 2 {
+			for x := min; x <= max; x++ {
+				grid[x][from.y]++
+				if grid[x][from.y] == 2 {
 					dangerous++
 				}
 			}
 		} else if from.y != to.y {
 			min, max := minMax(from.y, to.y)
-			for i := min; i <= max; i++ {
-				grid[from.x][i]++
-				if grid[from.x][i] == 2 {
+			for y := min; y <= max; y++ {
+				grid[from.x][y]++
+				if grid[from.x][y] == 2 {
 					dangerous++
 				}
 			}
