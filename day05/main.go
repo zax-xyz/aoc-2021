@@ -17,6 +17,14 @@ func main() {
 	p2()
 }
 
+func minMax(x, y int) (min, max int) {
+	if x < y {
+		return x, y
+	}
+
+	return y, x
+}
+
 func p1() {
 	lines := lib.ReadLines("day5.txt")
 
@@ -30,29 +38,17 @@ func p1() {
 			continue
 		}
 
-		if from.x < to.x {
-			for i := from.x; i <= to.x; i++ {
+		if from.x != to.x {
+			min, max := minMax(from.x, to.x)
+			for i := min; i <= max; i++ {
 				grid[i][from.y]++
 				if grid[i][from.y] == 2 {
 					dangerous++
 				}
 			}
-		} else if from.x > to.x {
-			for i := from.x; i >= to.x; i-- {
-				grid[i][from.y]++
-				if grid[i][from.y] == 2 {
-					dangerous++
-				}
-			}
-		} else if from.y < to.y {
-			for i := from.y; i <= to.y; i++ {
-				grid[from.x][i]++
-				if grid[from.x][i] == 2 {
-					dangerous++
-				}
-			}
-		} else if from.y > to.y {
-			for i := from.y; i >= to.y; i-- {
+		} else if from.y != to.y {
+			min, max := minMax(from.y, to.y)
+			for i := min; i <= max; i++ {
 				grid[from.x][i]++
 				if grid[from.x][i] == 2 {
 					dangerous++
