@@ -9,11 +9,11 @@ import (
 )
 
 func main() {
-	p1()
-	p2()
+	fmt.Println(p1())
+	fmt.Println(p2())
 }
 
-func p1() {
+func p1() int {
 	lines := lib.ReadLines("day4.txt")
 
 	drawn := []int{}
@@ -33,11 +33,13 @@ func p1() {
 
 			board[pos[0]][pos[1]] = ^board[pos[0]][pos[1]]
 			if checkBoard(board, pos[0], pos[1]) {
-				fmt.Println(getScore(board, num))
-				return
+				return getScore(board, num)
 			}
 		}
 	}
+
+	// we fucked up
+	return -1
 }
 
 func readBoards(lines []string) (boards [][][]int, positions []map[int][2]int) {
@@ -103,7 +105,7 @@ func getScore(board [][]int, num int) int {
 	return score * num
 }
 
-func p2() {
+func p2() int {
 	lines := lib.ReadLines("day4.txt")
 
 	drawn := []int{}
@@ -133,9 +135,11 @@ func p2() {
 			}
 
 			if len(remaining) == 0 {
-				fmt.Println(getScore(board, num))
-				return
+				return getScore(board, num)
 			}
 		}
 	}
+
+	// we fucked up
+	return -1
 }

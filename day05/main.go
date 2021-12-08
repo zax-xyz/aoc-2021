@@ -13,8 +13,8 @@ type point struct {
 }
 
 func main() {
-	p1()
-	p2()
+	fmt.Println(p1())
+	fmt.Println(p2())
 }
 
 func minMax(x, y int) (min, max int) {
@@ -25,7 +25,7 @@ func minMax(x, y int) (min, max int) {
 	return y, x
 }
 
-func p1() {
+func p1() int {
 	lines := lib.ReadLines("day5.txt")
 
 	grid := [1000][1000]int{}
@@ -57,7 +57,7 @@ func p1() {
 		}
 	}
 
-	fmt.Println(dangerous)
+	return dangerous
 }
 
 func parsePoints(line string) (from, to point) {
@@ -74,7 +74,7 @@ func parsePoints(line string) (from, to point) {
 	return point{x1, y1}, point{x2, y2}
 }
 
-func p2() {
+func p2() int {
 	lines := lib.ReadLines("day5.txt")
 
 	grid := [1000][1000]int{}
@@ -117,5 +117,5 @@ func p2() {
 		}
 	}
 
-	fmt.Println(dangerous)
+	return dangerous
 }

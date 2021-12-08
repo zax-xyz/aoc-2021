@@ -7,11 +7,11 @@ import (
 )
 
 func main() {
-	p1()
-	p2()
+	fmt.Println(p1())
+	fmt.Println(p2())
 }
 
-func p1() {
+func p1() int {
 	lines := lib.ReadLines("day3.txt")
 	bits := mostCommonBits(lines)
 
@@ -22,7 +22,7 @@ func p1() {
 
 	epsilon := gamma ^ ((1 << 12) - 1)
 
-	fmt.Println(gamma * epsilon)
+	return gamma * epsilon
 }
 
 func mostCommonBits(lines []string) []int {
@@ -45,14 +45,14 @@ func mostCommonBits(lines []string) []int {
 	return bits
 }
 
-func p2() {
+func p2() int {
 	lines := lib.ReadLines("day3.txt")
 	bits := mostCommonBits(lines)
 
 	oxygen := bitstringToInt(filter(lines, bits, false))
 	co2 := bitstringToInt(filter(lines, bits, true))
 
-	fmt.Println(oxygen * co2)
+	return oxygen * co2
 }
 
 // flip changes the behaviour from most common bit to least common

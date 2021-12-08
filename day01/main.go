@@ -10,11 +10,11 @@ import (
 )
 
 func main() {
-	p1()
-	p2()
+	fmt.Println(p1())
+	fmt.Println(p2())
 }
 
-func p1() {
+func p1() int {
 	f, err := os.Open("day1.txt")
 	if err != nil {
 		log.Fatal(err)
@@ -44,10 +44,10 @@ func p1() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(increases)
+	return increases
 }
 
-func p2() {
+func p2() int {
 	nums := readNums("day2.txt")
 
 	increases := 0
@@ -67,7 +67,7 @@ func p2() {
 		windowSum = newWindowSum
 	}
 
-	fmt.Println(increases)
+	return increases
 }
 
 func readNums(filename string) []int {

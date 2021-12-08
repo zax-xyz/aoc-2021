@@ -10,11 +10,11 @@ import (
 )
 
 func main() {
-	p1()
-	p2()
+	fmt.Println(p1())
+	fmt.Println(p2())
 }
 
-func p1() {
+func p1() int {
 	lines := lib.ReadLines("day7.txt")
 
 	parts := strings.Split(lines[0], ",")
@@ -44,10 +44,10 @@ func p1() {
 		}
 	}
 
-	fmt.Println(minFuel)
+	return minFuel
 }
 
-func p2() {
+func p2() int {
 	lines := lib.ReadLines("day7.txt")
 
 	parts := strings.Split(lines[0], ",")
@@ -80,5 +80,5 @@ func p2() {
 		}
 	}
 
-	fmt.Println(minFuel)
+	return minFuel
 }

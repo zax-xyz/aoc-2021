@@ -10,11 +10,11 @@ import (
 )
 
 func main() {
-	p1()
-	p2()
+	fmt.Println(p1())
+	fmt.Println(p2())
 }
 
-func p1() {
+func p1() int {
 	lines := lib.ReadLines("day2.txt")
 	pos := [2]int{0, 0}
 	for _, line := range lines {
@@ -36,10 +36,10 @@ func p1() {
 		}
 	}
 
-	fmt.Println(pos[0] * pos[1])
+	return pos[0] * pos[1]
 }
 
-func p2() {
+func p2() int {
 	lines := lib.ReadLines("day2.txt")
 
 	aim := 0
@@ -65,5 +65,5 @@ func p2() {
 		}
 	}
 
-	fmt.Println(pos[0] * pos[1])
+	return pos[0] * pos[1]
 }

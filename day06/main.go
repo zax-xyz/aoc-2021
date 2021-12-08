@@ -9,11 +9,11 @@ import (
 )
 
 func main() {
-	p1()
-	p2()
+	fmt.Println(p1())
+	fmt.Println(p2())
 }
 
-func p1() {
+func p1() int {
 	lines := lib.ReadLines("day6.txt")
 
 	fishPlural := []int{}
@@ -33,10 +33,10 @@ func p1() {
 		}
 	}
 
-	fmt.Println(len(fishPlural))
+	return len(fishPlural)
 }
 
-func p2() {
+func p2() int {
 	lines := lib.ReadLines("day6.txt")
 
 	fishPlural := map[int]int{}
@@ -61,5 +61,5 @@ func p2() {
 		count += fish
 	}
 
-	fmt.Println(count)
+	return count
 }
