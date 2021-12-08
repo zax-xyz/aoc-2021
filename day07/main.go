@@ -36,7 +36,10 @@ func p1() {
 	for i := min; i <= max; i++ {
 		fuel := 0
 		for _, pos := range positions {
-			fuel += int(math.Abs(float64(i - pos)))
+			// S_n = n/2 (1 + n)
+			// where S_n = 1 + 2 + ... + n
+			n := math.Abs(float64(i - pos))
+			fuel += int(n / 2 * (1 + n))
 		}
 
 		if fuel < minFuel {
