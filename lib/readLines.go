@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"strconv"
 )
 
 func ReadLines(filename string) []string {
@@ -26,4 +27,26 @@ func ReadLines(filename string) []string {
 	}
 
 	return nums
+}
+
+func ReadInts(filename string) [][]int {
+	lines := ReadLines(filename)
+
+	ints := make([][]int, len(lines))
+
+	for i, line := range lines {
+		lineInts := make([]int, len(line))
+		for j, char := range line {
+			num, err := strconv.Atoi(string(char))
+			if err != nil {
+				log.Fatal("Unexpected non-integer in input file: " + string(char))
+			}
+
+			lineInts[j] = num
+		}
+
+		ints[i] = lineInts
+	}
+
+	return ints
 }
